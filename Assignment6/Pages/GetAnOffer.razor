@@ -1,0 +1,49 @@
+﻿@page "/getanoffer"
+
+<h3>Få et tilbud på godt håndværk</h3>
+
+<EditForm Model="@newOffer" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <label for="offerType">Tilbudstype:</label>
+        <InputSelect class="form-control col-6" id="offerType" @bind-Value="newOffer.OfferType">
+            <option value="">Vælg en tilbudstype ...</option>
+            <option value="Windowcleaning">Rudevask</option>
+            <option value="Lawnmowing">Græsslåning</option>
+            <option value="Carwash">Bilvask</option>
+        </InputSelect>
+        <ValidationMessage For="@(() => newOffer.OfferType)" />
+    </div>
+
+    <div class="form-group">
+        <label for="message">Beskrivelse (Frivillig):</label>
+        <InputTextArea class="form-control col-6" id="message" @bind-Value="newOffer.Message" placeholder="Skriv en besked her..." />
+    </div>
+
+    <div class="form-group">
+        <label for="fullName">Navn:</label>
+        <InputText class="form-control col-6" id="fullName" @bind-Value="newOffer.FullName" placeholder="Dit fulde navn" />
+        <ValidationMessage For="@(() => newOffer.FullName)" />
+    </div>
+
+    <div class="form-group">
+        <label for="emailAddress">Email:</label>
+        <InputText class="form-control col-6" id="emailAddress" @bind-Value="newOffer.EmailAddress" placeholder="Email adresse" />
+        <ValidationMessage For="@(() => newOffer.EmailAddress)" />
+    </div>
+
+    <div class="form-group text-right col-6">
+        <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+
+</EditForm>
+
+@code {
+    private OfferClassDTO newOffer = new OfferClassDTO();
+
+    private void HandleValidSubmit()
+    {
+        Console.WriteLine($"Success, {newOffer.FullName}");
+    }
+}
