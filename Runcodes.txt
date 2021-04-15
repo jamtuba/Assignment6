@@ -1,0 +1,8 @@
+To run the Blazor client and Azure Function, you'll need to run the following two commands in separate consoles/terminals:
+
+At the root folder run: 
+	dotnet run --project Assignment6
+At the Api folder run: 
+	func start --cors "https://localhost:5001,http://localhost:5000"
+
+The --cors argument is required to allow communication between localhost:5001 or localhost:5000 and the Azure Function at localhost:7071.

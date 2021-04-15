@@ -9,11 +9,11 @@ using Newtonsoft.Json;
 
 namespace Api
 {
-    public static class MessageSender
+    public class MessageSenderFunction
     {
-        [FunctionName("MessageSender")]
-        public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+        [FunctionName("MessageSenderFunction")]
+        public async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Function,"post", Route = null)] HttpRequest req,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");

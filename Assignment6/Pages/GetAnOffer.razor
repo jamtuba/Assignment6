@@ -1,5 +1,7 @@
 ﻿@page "/getanoffer"
 
+@inject IApiRepo _apiRepo
+
 <h3>Få et tilbud på godt håndværk</h3>
 
 <EditForm Model="@newOffer" OnValidSubmit="@HandleValidSubmit">
@@ -35,15 +37,19 @@
 
     <div class="form-group text-right col-6">
         <button class="btn btn-primary" type="submit">Submit</button>
-        </div>
+    </div>
 
 </EditForm>
 
 @code {
     private OfferClassDTO newOffer = new OfferClassDTO();
 
-    private void HandleValidSubmit()
+    private async Task HandleValidSubmit()
     {
         Console.WriteLine($"Success, {newOffer.FullName}");
+
+        await _apiRepo.SendHttp(newOffer);
+
+        //MessageSender.Sender(newOffer.FullName);
     }
 }

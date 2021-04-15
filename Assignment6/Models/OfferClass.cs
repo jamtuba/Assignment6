@@ -5,7 +5,7 @@ namespace Assignment6.Models
     public class OfferClass
     {
         [Required]
-        public int OfferNumber { get; set; }
+        public string OfferNumber { get; set; }
 
         [Required]
         public string OfferType { get; set; }
